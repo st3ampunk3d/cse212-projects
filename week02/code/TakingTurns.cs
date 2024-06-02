@@ -16,6 +16,9 @@
         while (players.Length > 0)
             players.GetNextPerson();
         // Defect(s) Found: 
+        // Current output: Sue, Sue, Sue, Tim, Tim, Tim, Tim, Bob, Bob.
+        // It looks like Enqueue is jumping the line and adding new people to the front instead of the back
+        // PersonQueue.cs line 14:  _queue.Insert(0, person); -> _queue.Add(person)
 
         Console.WriteLine("---------");
 
@@ -38,7 +41,11 @@
         while (players.Length > 0)
             players.GetNextPerson();
 
-        // Defect(s) Found: 
+        // Defect(s) Found:
+        // Current Oputput: Sue, Sue, Sue, Tim, Tim, George, George, George, Tim, Tim, Tim, Bob, Bob
+        // This appears to be the same issue as Test 1. The output is in the reverse order that the people were created indicating they're being added to the front instead of the back.
+        // When they are dequeued and requeued, the same person gets to use all of their turns before the next person goes.
+        // PersonQueue.cs line 14:  _queue.Insert(0, person); -> _queue.Add(person)
 
         Console.WriteLine("---------");
 
@@ -56,7 +63,11 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found:
+        // Current Output: Sue, Sue, Sue, Tim, Bob, Bob, No one, No one, No one, No one
+        // Same ordering issue as Test 1
+        // The GetNextPerson function doesn't know how to handle an input of 0 (forever) turns and treats it as no turns.
+        // TakingTurnsQueue.cs line 40 -> else if (person.Turns < 1) {_people.Enqueue(person);}
 
         Console.WriteLine("---------");
 
@@ -73,7 +84,10 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found:
+        // Current output: Sue, Sue, Sue, Tim, No one, No one, No one, No one, No one, No One
+        // Same ordering issue as test 1
+        // It looks like any value less than 1 should be treated as (forever) turns
 
         Console.WriteLine("---------");
 
@@ -83,6 +97,6 @@
         Console.WriteLine("Test 5");
         players = new TakingTurnsQueue();
         players.GetNextPerson();
-        // Defect(s) Found:
+        // Defect(s) Found: None
     }
 }

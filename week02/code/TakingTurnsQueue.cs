@@ -37,6 +37,8 @@ public class TakingTurnsQueue {
             if (person.Turns > 1) {
                 person.Turns -= 1;
                 _people.Enqueue(person);
+            } else if (person.Turns < 1) {
+                _people.Enqueue(person);
             }
 
             Console.WriteLine(person.Name);
