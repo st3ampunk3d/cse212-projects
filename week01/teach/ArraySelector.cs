@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 public static class ArraySelector
 {
     public static void Run()
@@ -11,6 +13,23 @@ public static class ArraySelector
 
     private static int[] ListSelector(int[] list1, int[] list2, int[] select)
     {
-        return new int[0];
+        //create an empty array the same size as the select array
+        var result = new int [select.Length];
+
+        //create iterators to keep track of the working index of l1 and l2
+        var l1i = 0;
+        var l2i = 0;
+
+        //loop through the select array and create an iterator to keep track of the index
+        for (var i = 0; i < select.Length; i++ ) {
+
+            //If the current index of select contains a 1 store the value of the first array
+            if (select[i] == 1) 
+                result[i] = list1[l1i++]; //increment the index of list 1
+            //If the current index of select contains a 2, store the value of the second array
+            else 
+                result[i] = list2[l2i++]; //increment the index of list2
+        }
+        return result; //return the new, combined array
     }
 }

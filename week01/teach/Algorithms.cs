@@ -35,6 +35,8 @@ public static class Algorithms {
     /// done the count is returned.
     /// </summary>
     /// <param name="size">the amount of work to do</param>
+    
+    //O(n)
     private static int Algorithm1(int size) {
         var count = 0;
         for (var i = 0; i < size; ++i)
@@ -51,11 +53,14 @@ public static class Algorithms {
     /// <param name="size">the amount of work to do</param>
     private static int Algorithm2(int size) {
         var count = 0;
+        //O(n)
         for (var i = 0; i < size; ++i)
+        //O(n)
         for (var j = 0; j < size; ++j)
+            //O(n^2)
             count += 1;
 
-        return count;
+        return count; //O(n^2)
     }
 
     /// <summary>
@@ -68,6 +73,7 @@ public static class Algorithms {
         var count = 0;
         var start = 0;
         var end = size - 1;
+        //O(log(n))
         while (start <= end) {
             var middle = (end - start) / 2 + start;
             start = middle + 1;
@@ -77,3 +83,9 @@ public static class Algorithms {
         return count;
     }
 }
+
+
+//Algorithm 3 has the best performance
+//Algorithm 2 has the worst performance
+
+//In small data sets the time to iterate through the loop is negligable

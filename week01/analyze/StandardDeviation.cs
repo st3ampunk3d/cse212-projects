@@ -12,6 +12,7 @@ public static class StandardDeviation {
         Console.WriteLine(StandardDeviation3(numbers)); // Should be 147.322 
     }
 
+    //Two loops that go through the entire array. O(2n) or O(n)
     private static double StandardDeviation1(int[] numbers) {
         var total = 0.0;
         var count = 0;
@@ -33,6 +34,7 @@ public static class StandardDeviation {
     private static double StandardDeviation2(int[] numbers) {
         var sumSquaredDifferences = 0.0;
         var countNumbers = 0;
+        //Nested loops that both go through the entire array. O(n^2)
         foreach (var number in numbers) {
             var total = 0;
             var count = 0;
@@ -54,6 +56,7 @@ public static class StandardDeviation {
         var count = numbers.Length;
         var avg = (double)numbers.Sum() / count;
         var sumSquaredDifferences = 0.0;
+        //single loop O(n)
         foreach (var number in numbers) {
             sumSquaredDifferences += Math.Pow(number - avg, 2);
         }
