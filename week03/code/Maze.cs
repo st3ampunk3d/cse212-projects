@@ -29,7 +29,13 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveLeft() {
-        // FILL IN CODE
+        var key = (_currX, _currY);
+        if (_mazeMap.ContainsKey(key) && _mazeMap[key][0] != false) {
+            _currX--;
+            Console.WriteLine($"Moving Left to {_currX},{_currY}");
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -37,7 +43,13 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveRight() {
-        // FILL IN CODE
+        var key = (_currX, _currY);
+        if (_mazeMap.ContainsKey(key) && _mazeMap[key][1] != false) {
+            _currX++;
+            Console.WriteLine($"Moving Right to {_currX},{_currY}");
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -45,7 +57,13 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveUp() {
-        // FILL IN CODE
+        var key = (_currX, _currY);
+        if (_mazeMap.ContainsKey(key) && _mazeMap[key][2] != false) {
+            _currY--;
+            Console.WriteLine($"Moving Up to {_currX},{_currY}");
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -53,7 +71,13 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveDown() {
-        // FILL IN CODE
+        var key = (_currX, _currY);
+        if (_mazeMap.ContainsKey(key) && _mazeMap[key][3] != false) {
+            _currY++;
+            Console.WriteLine($"Moving Down to {_currX},{_currY}");
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     public void ShowStatus() {
