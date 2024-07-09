@@ -98,5 +98,20 @@ public static class TreesTester {
     /// <param name="bst">the BinarySearchTree in which to insert the values</param>
     private static void InsertMiddle(int[] sortedNumbers, int first, int last, BinarySearchTree bst) {
         // TODO Start Problem 5
+
+        //Make sure we have a valid range
+        if (first > last) {
+            return;
+        }
+
+        //Find the index in the middle of the range
+        int middle = first + (last-first) / 2;
+
+        //Start in the middle and insert the value
+        bst.Insert(sortedNumbers[middle]);
+
+        //Work out from the middle to recursivley fill in the left and right
+        InsertMiddle(sortedNumbers, first, middle-1, bst);
+        InsertMiddle(sortedNumbers, middle+1, last, bst);
     }
 }
